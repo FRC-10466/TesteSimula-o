@@ -1,4 +1,5 @@
 package frc.robot;
+import edu.wpi.first.wpilibj.RobotBase;
 //Imports WPLIP
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -32,6 +33,7 @@ import frc.robot.commands.Limelight.AjusteAnguloShooterTraction;
 import frc.robot.Constantes.ConstantesShooter;
 import frc.robot.Extras.AnguloPreset;
 import frc.robot.Extras.AngulosPresetPivot;
+import frc.robot.Simulacao.ArenaSimulada;
 import frc.robot.commands.Angulador.AnguladorAutoPorLimelight;
 import frc.robot.commands.Angulador.MoverAnguladoPreset;
 import frc.robot.commands.Shooter.*;
@@ -209,6 +211,12 @@ btnJ.whileTrue(new AutoAimShooter(angulador, shooter, limelight));
         new ShooterRight(shooter, index, index, intakeFloor)
         );
     }
+
+    private final ArenaSimulada arena = RobotBase.isSimulation() ? new ArenaSimulada() : null;
+
+public void simulationPeriodic() {
+    if (arena != null) arena.atualizar();
+}
 
 }
 

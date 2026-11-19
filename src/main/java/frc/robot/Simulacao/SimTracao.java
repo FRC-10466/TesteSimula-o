@@ -48,7 +48,7 @@ public class SimTracao {
             KitbotWheelSize.kSixInch,
             null 
         );
-        chassi.setPose(new Pose2d(3.0, 4.0, new Rotation2d())); 
+        chassi.setPose(new Pose2d(0.5, 2.5, new Rotation2d())); 
         SmartDashboard.putData("Campo Simulado", campo);
     }
 
@@ -84,6 +84,7 @@ public class SimTracao {
         campo.setRobotPose(chassi.getPose());
         posePub.set(chassi.getPose());
     }
+    public Pose2d getPoseReal() { return chassi.getPose(); }
 
     private double paraRpmMotor(double metrosPorSegundo) {
         double voltasDaRodaPorSegundo = metrosPorSegundo / METROS_POR_VOLTA;

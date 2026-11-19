@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix6.hardware.Pigeon2;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.RobotBase;
 //import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
@@ -112,4 +113,5 @@ SmartDashboard.putNumber("Encoder/AverageDistance", getAverageDistance());
     public void simulationPeriodic() {
         sim.atualizar();
     }
+    public Pose2d getPoseSimulada() { return sim != null ? sim.getPoseReal() : new Pose2d(); }
 }
